@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Income and Expense</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/1570/1570998.png" type="image/x-icon" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS-CDN Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom theme for TailwindCSS -->
+  <style type="text/tailwindcss">
+    @theme {
+        --font-Asul: "Asul", sans-serif;
+        --font-Exo: "Exo", sans-serif;
+      }
+    </style>
+</head>
+
+<body onload="onLoad()" class="font-Exo">
+  <div class="h-screen p-4 overflow-y-auto bg-white">
+    <!-- header start -->
+    <header class="mb-8">
+      <h1 class="font-Asul text-4xl sm:text-5xl text-center font-bold ">
+         Income & Expense Calculator
+      </h1>
+    </header>
+    <!-- header end -->
+    <!-- balance card start -->
+    <div class="flex max-w-[1000px] justify-center lg:justify-end items-center gap-5 mx-auto mb-8">
+      <div>
+        <h4 class="font-Asul text-xl text-center font-semibold text-gray-600">
+          Income
+        </h4>
+        <p class="text-lg text-center font-medium text-gray-600" id="income-total">
+          0
+        </p>
+      </div>
+      <div>
+        <h4 class="text-xl text-center font-semibold text-gray-500">
+          Expense
+        </h4>
+        <p class="text-lg text-center font-medium text-gray-500" id="expense-total">
+          0
+        </p>
+      </div>
+      <div>
+        <h4 class="text-xl text-center font-semibold  text-gray-400">
+          Net balance
+        </h4>
+        <p class="text-lg text-center font-medium text-gray-400" id="net-balance">
+          0
+        </p>
+      </div>
+    </div>
+    <!-- balance card end -->
+
+    <!-- Main container starts -->
+    <div class="flex flex-col lg:flex-row flex-grow gap-4 items-center lg:items-stretch w-full max-w-[1000px] mx-auto">
+      <!-- Expense List card start -->
+      <div class="rounded-[10px] shadow-[0px_0px_8px_1px_#00000040] p-4 w-full order-1 lg:order-0">
+        <!-- List header start -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+          <h3 class="font-Asul text-2xl font-bold mb-2">Expense Detailed list</h3>
+          <div class="flex gap-4">
+            <div>
+              <input type="radio" id="all" value="all" onclick="changeFilter('all')" />
+              <label for="all">All</label>
+            </div>
+
+            <div>
+              <input type="radio" id="income" value="income" onclick="changeFilter('income')" />
+              <label for="income">Income</label>
+            </div>
+            <div>
+              <input type="radio" id="expense" value="expense" onclick="changeFilter('expense')" />
+              <label for="expense">Expense</label>
+            </div>
+          </div>
+        </div>
+        <!-- List header end -->
+        <!-- Expense List start -->
+        <div id="record-list" class="w-full h-[450px] overflow-y-auto"></div>
+        <!-- Expense List end -->
+      </div>
+      <!-- Form start -->
+      <form id="record-form" class="w-full max-w-[450px] lg:max-w-[350px]">
+        <div
+          class="flex flex-col rounded-[12px] shadow-[0px_0px_8px_1px_#00000040] p-4 w-full order-0 lg:order-1 h-full">
+          <div class="flex flex-col h-full">
+            <h3 class="font-Asul text-2xl font-bold mb-2">Expense Calculator</h3>
+            <div class="flex flex-col gap-1 w-full items-stretch my-2">
+              <label for="title" class="text-lg font-medium">Title:</label>
+              <input type="text" id="title" placeholder="Enter title"
+                class="border rounded-md p-2 focus:outline-none text-lg" />
+            </div>
+            <!-- Title input end -->
+            <!-- Amount input start -->
+            <div class="flex flex-col gap-1 items-stretch my-2">
+              <label for="amount" class="text-lg font-medium">Amount:</label>
+              <input type="number" id="amount" placeholder="Enter amount"
+                class="border rounded-md p-2 focus:outline-none text-lg" />
+            </div>
+            <!-- Amount input end -->
+            <div class="flex flex-col gap-1 items-start my-2">
+              <label for="amount-type" class="text-lg font-medium">Accounts:</label>
+              <div class="relative w-full">
+                <select id="amount-type"
+                  class="appearance-none pr-12 pl-2 py-2 border w-full p-2 rounded-md focus:outline-none text-lg">
+                  <option value="Income">Income</option>
+                  <option value="Expense">Expense</option>
+                </select>
+                <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-600"></i>
+              </div>
+            </div>
+            <!-- Title input start -->
+          </div>
+          <p id="message" class="text-red-600 text-xs font-thin"></p>
+          <div class="flex flex-col sm:flex-row gap-4 my-4">
+            <button class="bg-blue-500 px-4 py-2 rounded-md text-base font-medium text-white cursor-pointer w-full"
+              type="submit" id="record-submit">
+              Add Record
+            </button>
+            <button
+              class="bg-white border border-blue-500 px-4 py-2 rounded-md text-base font-medium text-blue-500 cursor-pointer w-full"
+              onclick="resetRecord()" type="button">
+              Reset
+            </button>
+          </div>
+        </div>
+      </form>
+      <!-- Form end -->
+    </div>
+    <!-- Main container end -->
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
