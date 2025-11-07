@@ -12,7 +12,7 @@ A web application for managing personal finances and tracking income/expenses.
 ## Getting Started
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/Income-Expenses.git
+git clone https://github.com/Mahalaksh143/Income-Expenses.git
 ```
 2. Open index.html in your browser
 3. Start tracking your finances
