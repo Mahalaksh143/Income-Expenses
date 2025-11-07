@@ -1,77 +1,37 @@
-# Income and Expenses Tracker
+# Expense Tracker
 
-A web-based application for tracking personal finances and managing budget efficiently. Secure, intuitive, and feature-rich solution for personal financial management.
+A simple and efficient expense tracking application to help you manage your finances.
 
 ## Features
 
-- Record and categorize income sources
-- Track daily, weekly, and monthly expenses
-- Generate detailed financial reports and analytics
-- View historical balance trends
-- Set budget limits and receive alerts
-- Export data to CSV/PDF formats
-- Multi-currency support
-- Recurring transaction management
-- Mobile-responsive design
+- Add, edit, and delete expenses
+- Categorize expenses
+- View expense summaries and reports
+- User-friendly interface
 
 ## Getting Started
 
-1. Clone the repository
-```bash
-git clone https://github.com/Mahalaksh143/income-expenses.git
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Mahalaksh143/Income-Expenses.git
+   ```
+2. **Open the project folder and launch `index.html` in your browser.**
 
-2. Install dependencies
-```bash
-npm install
-```
+## Project Operations
 
-3. Configure environment variables
-```bash
-cp .env.example .env
-```
+- **Add Expense:** Enter details such as amount, category, and title to record a new expense.
+- **Edit Expense:** Update existing expense entries to correct or modify information.
+- **Delete Expense:** Remove expenses that are no longer needed.
+- **Categorize Expenses:** Assign categories to expenses for better organization.
+- **View Summaries:** Access visual summaries and reports to analyze spending patterns.
 
-4. Start the application
-```bash
-npm start
-```
+## Features
 
-## Technologies
-
-- Frontend: React.js
-- Backend: Node.js, Express
-- Database: MongoDB
-- Authentication: JWT
-- Charts: Chart.js
-- Testing: Jest
-- CI/CD: GitHub Actions
-
-## Usage
-
-1. Register an account or login
-2. Add your income sources
-3. Record your expenses
-4. View reports and analytics
-5. Export financial data as needed
-6. Set up budget alerts
-7. Manage recurring transactions
-
-## API Documentation
-
-API documentation is available at `/api/docs` when running the application locally.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push to the branch
-5. Submit a pull request
+- Real-time updates to expense list and summaries.
+- Easy customization with TailwindCSS.
+- Data persistence using browser local storage.
+- Responsive design for desktop and mobile devices.
+- No backend required—runs entirely in the browser.
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-For support, please open an issue in the GitHub repository.
+MIT License-see License.md for details.
